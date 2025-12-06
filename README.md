@@ -18,7 +18,7 @@ architecture.
     -   Ctrl+S → Save
     -   Ctrl+Shift+S → Save As
     -   Ctrl+Q → Exit
--   ✅ Cross-platform (Linux / Windows / macOS)
+-   ✅ Cross-platform (Linux / Windows)
 
 ------------------------------------------------------------------------
 
