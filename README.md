@@ -26,14 +26,14 @@ architecture.
 
 -   Python 3.10+
 -   pip
--   Git (optional, for development)
--   (Linux) build-essential (only required for packaging)
+-   Git (optional)
+-   (Linux) build-essential (only for binary builds)
 
 ------------------------------------------------------------------------
 
 ## Installation (Development)
 
-Clone the repository and enter the project directory:
+Clone the repository:
 
 ``` bash
 git clone https://github.com/Maxim-Lutz1/NovaCode.git
@@ -62,27 +62,111 @@ python3 src/main.py
 
 ------------------------------------------------------------------------
 
-## Build
+# Building NovaCode
 
-### Build executable with PyInstaller
+NovaCode can be packaged as a native executable for Windows, Linux and
+macOS.
+
+------------------------------------------------------------------------
+
+## Linux Build
+
+### With PyInstaller (recommended first build)
 
 ``` bash
 pyinstaller --onefile --windowed src/main.py
 ```
 
-Resulting binary will be created in:
+Binary will be located in:
 
     dist/
 
 ------------------------------------------------------------------------
 
-### Build native binary with Nuitka (faster)
+### With Nuitka (faster / native backend)
 
 ``` bash
 python3 -m nuitka --standalone --onefile src/main.py
 ```
 
-The output binary will appear in the project folder.
+The resulting binary will appear in the project directory.
+
+------------------------------------------------------------------------
+
+## Windows Build
+
+On Windows, open **PowerShell** or **CMD**, then:
+
+Activate venv:
+
+``` cmd
+.venv\Scripts\activate
+```
+
+Then build:
+
+``` cmd
+pyinstaller --onefile --windowed src\main.py
+```
+
+You will get:
+
+    dist\main.exe
+
+Rename it:
+
+    NovaCode.exe
+
+------------------------------------------------------------------------
+
+### Windows (Nuitka -- optional advanced)
+
+``` cmd
+python -m nuitka --standalone --onefile src\main.py
+```
+
+------------------------------------------------------------------------
+
+## macOS Build
+
+### Requirements:
+
+-   Python 3 (via Homebrew recommended)
+-   Xcode Command Line Tools
+
+Install tools:
+
+``` bash
+xcode-select --install
+```
+
+Activate environment:
+
+``` bash
+source .venv/bin/activate
+```
+
+Build:
+
+``` bash
+pyinstaller --onefile --windowed src/main.py
+```
+
+Binary will appear in:
+
+    dist/
+
+------------------------------------------------------------------------
+
+## Output Files
+
+After build:
+
+  OS        Output
+  --------- --------------------------
+  Linux     `NovaCode`
+  Windows   `NovaCode.exe`
+  macOS     `NovaCode.app` or binary
 
 ------------------------------------------------------------------------
 
@@ -96,7 +180,7 @@ The output binary will appear in the project folder.
     ├── VERSION
     ├── README.md
     ├── .gitignore
-    └── .venv/        (ignored by git)
+    └── .venv/        (ignored)
 
 ------------------------------------------------------------------------
 
